@@ -103,6 +103,7 @@ function Canvas() {
         height={windowHeight}
         offsetX={mobile ? windowWidth - 2 : 0}
         onClick={() => dispatch(clearSelection())}
+        data-testid="canvas-stage"
       >
         <Layer>
           <Connectors />

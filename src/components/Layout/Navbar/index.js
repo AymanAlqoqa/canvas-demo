@@ -79,7 +79,7 @@ export default function Navbar() {
             </StyledButton>
             <StyledButton
               variant="contained"
-              aria-label="DownLoad button"
+              aria-label="Reset button"
               onClick={handleReset}
             >
               Reset

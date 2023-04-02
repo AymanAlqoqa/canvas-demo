@@ -9,7 +9,7 @@ function Form() {
   const dispatch = useDispatch();
   const shapeSelector = useSelector((state) => state?.diagrams?.selected);
   const selectedShape = useSelector(
-    (state) => state?.diagrams.shapes[shapeSelector]
+    (state) => state?.diagrams?.shapes[shapeSelector]
   );
   const [nodeLabel, setNodeLabel] = useState(selectedShape?.label || "");
 

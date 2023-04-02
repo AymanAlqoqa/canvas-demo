@@ -35,6 +35,7 @@ function Pallet() {
         data-shape={SHAPE_TYPES.RECT}
         draggable
         onDragStart={handleDragStart}
+        data-testid="rectangle-shape"
       >
         Node
       </StylesShape>
@@ -43,6 +44,7 @@ function Pallet() {
         draggable
         onDragStart={handleDragStart}
         circle="true"
+        data-testid="circle-shape"
       >
         Node
       </StylesShape>
