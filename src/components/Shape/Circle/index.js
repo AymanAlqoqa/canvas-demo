@@ -1,5 +1,5 @@
 import React, { useRef, useCallback } from "react";
-import { Circle as KonvaCircle, Text, Transformer, Group } from "react-konva";
+import { Circle as KonvaCircle, Text, Group } from "react-konva";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
@@ -66,6 +66,10 @@ function Circle({ type, id, label, isSelected, ...shapeProps }) {
         onTap={handleSelect}
         onDragStart={handleSelect}
         onDragEnd={handleDrag}
+        offset={{
+          x: shapeProps?.width / 2,
+          y: shapeProps?.height / 2,
+        }}
         draggable
         ref={shapeRef}
         key={id}

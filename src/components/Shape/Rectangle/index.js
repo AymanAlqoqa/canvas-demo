@@ -58,6 +58,7 @@ function Rectangle({ type, label, isSelected, id, ...shapeProps }) {
     },
     [id, fromShapeId]
   );
+
   return (
     <>
       <Group
@@ -68,6 +69,10 @@ function Rectangle({ type, label, isSelected, id, ...shapeProps }) {
         draggable
         ref={shapeRef}
         key={id}
+        offset={{
+          x: -shapeProps?.width / 2,
+          y: shapeProps?.height / 2,
+        }}
         onDblClick={(e) => {
           if (fromShapeId) {
             handleCreateConnector(e);
@@ -79,10 +84,22 @@ function Rectangle({ type, label, isSelected, id, ...shapeProps }) {
       >
         <KonvaRectangle
           {...shapeProps}
+          offset={{
+            x: shapeProps?.width / 2,
+            y: -shapeProps?.height / 2,
+          }}
           draggable
           fill={fromShapeId === id ? "red" : shapeProps.fill}
         />
-        <Text text={label} {...textProps} draggable />
+        <Text
+          offset={{
+            x: shapeProps?.width / 2,
+            y: -shapeProps?.height / 2,
+          }}
+          text={label}
+          {...textProps}
+          draggable
+        />
       </Group>
     </>
   );

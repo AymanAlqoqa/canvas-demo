@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 
 import { SHAPE_TYPES } from "../../constants";
 import { useSelector } from "react-redux";

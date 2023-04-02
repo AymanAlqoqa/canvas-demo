@@ -12,6 +12,16 @@ const baseState = {
   connectors: [],
 };
 
+const updateLocalStorage = (state) => {
+  const data = {
+    selected: state.selected,
+    fromShapeId: state.fromShapeId,
+    shapes: state.shapes,
+    connectors: state.connectors,
+  };
+  localStorage.setItem(APP_NAMESPACE, JSON.stringify(data));
+};
+
 export const diagrams = createSlice({
   name: "diagrams",
   initialState: {
@@ -36,6 +46,7 @@ export const diagrams = createSlice({
         label,
         labelColor: DEFAULTS.RECT.LABEL_COLOR,
       };
+      updateLocalStorage(state);
     },
     createCircle: (state, { payload: { x, y, label } }) => {
       state.shapes[nanoid()] = {
@@ -48,6 +59,7 @@ export const diagrams = createSlice({
         label,
         labelColor: DEFAULTS.CIRCLE.LABEL_COLOR,
       };
+      updateLocalStorage(state);
     },
 
     createConnector: (state, { payload: { from, to } }) => {
@@ -60,6 +72,7 @@ export const diagrams = createSlice({
           id: nanoid(),
         },
       ];
+      updateLocalStorage(state);
     },
 
     updateDiagram: (state, { payload: { data } }) => {
@@ -94,6 +107,8 @@ export const diagrams = createSlice({
         shape.x = x;
         shape.y = y;
       }
+
+      updateLocalStorage(state);
     },
 
     updateAttribute: (state, { payload: { value, attr } }) => {

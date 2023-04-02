@@ -69,15 +69,39 @@ function Canvas() {
       window.removeEventListener("resize", handleWindowResize);
     };
   });
+  const tab = useMediaQuery((theme) => theme.breakpoints.down("md"));
+  const mobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
-  const mobile = useMediaQuery((theme) => theme.breakpoints.down("md"));
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
+    setWindowHeight(window.innerHeight);
+  }, [mobile, tab]);
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowWidth(window.innerWidth);
+      setWindowHeight(window.innerHeight);
+    };
+    window.addEventListener("resize", handleWindowResize);
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  });
 
   return (
-    <StyledMain onDrop={handleDrop} onDragOver={handleDragOver}>
+    <StyledMain
+      onDrop={handleDrop}
+      onDragOver={handleDragOver}
+      style={{
+        overflow: tab ? "scroll" : "hidden",
+      }}
+    >
       <Stage
+        scaleX={tab ? 0.5 : mobile ? 0.2 : 1}
+        scaleY={tab ? 0.5 : mobile ? 0.2 : 1}
         ref={stageRef}
-        width={mobile ? windowWidth : windowWidth - 320}
+        width={tab ? windowWidth - 2 : windowWidth - 320}
         height={windowHeight}
+        offsetX={mobile ? windowWidth - 2 : 0}
         onClick={() => dispatch(clearSelection())}
       >
         <Layer>

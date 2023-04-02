@@ -30,6 +30,6 @@ export const StylesShape = styled(Box)(({ theme, circle }) => ({
   justifyContent: circle === "true" ? "center" : "flex-start",
   marginBlockEnd: theme.spacing(2),
   [theme.breakpoints.down("md")]: {
-    width: circle === "true" ? 100 : 200,
+    maxWidth: circle === "true" ? 100 : 200,
   },
 }));

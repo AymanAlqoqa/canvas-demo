@@ -53,7 +53,7 @@ export default function Navbar() {
       <StyledAppBar position="static" elevation={0}>
         <StyledToolbar>
           <Form />
-          <Box alignItems={"flex-end"} display="flex">
+          <Box alignItems={"flex-end"} display="flex" flexWrap={"wrap"}>
             <Box sx={{ alignSelf: "flex-end", position: "relative" }}>
               <StyledButton variant="contained" aria-label="Upload button">
                 Upload
